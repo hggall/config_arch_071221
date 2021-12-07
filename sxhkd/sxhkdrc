@@ -1,0 +1,24 @@
+#The Simple X Hotkey Daemon config
+#Control volume of speakers and headphones (if plugged). Requires pulseaudio & pamixer 
+super + F1 
+ pamixer -d 5 && pamixer --sink alsa_output.pci-0000_00_1b.0.analog-stereo -d 5
+super + F2 
+ pamixer -i 5 && pamixer --sink alsa_output.pci-0000_00_1b.0.analog-stereo -i 5
+#Small command to play N64 games using mupen64plus. Change routes if needed
+super + shift + n
+ $TERM -e $SCRIPTS/PlayN64.sh
+#Small command to shutdown or reboot PC
+super + shift + x
+ $TERM -e $SCRIPTS/ShutdownReboot.sh
+#Screenshots
+control + Print
+ escrotum -C
+
+Print
+ escrotum && mv *_escrotum.png ~/Desktop/Screenshots
+
+control + shift + Print
+ escrotum -s && mv *_escrotum.png ~/Desktop/Screenshots
+
+control + super + Print
+ escrotum -sC
